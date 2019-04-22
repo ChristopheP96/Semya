@@ -5,6 +5,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 
 const User = require('../models/user');
+const Individual = require('../models/individual');
 
 const {
   isLoggedIn,
@@ -72,5 +73,12 @@ router.get('/private', isLoggedIn(), (req, res, next) => {
     message: 'This is a private message',
   });
 });
+
+/*router.get('/mytree', isLoggedIn(), (req, res, next) => {
+  res.status(200).json({
+    message: 'This is my familytree',
+  });
+});
+*/
 
 module.exports = router;

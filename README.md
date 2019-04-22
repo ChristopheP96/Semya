@@ -1,25 +1,25 @@
-# Auth backend server
+# Semya
 
 
-💣💣💣💣 rename the file `.env.sample` to `.env` and spicify your database name; 💣💣💣💣
+## Description
 
-## Routes
+Fill in your family tree with what you already know, and let the network fill in the gaps! 
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `get`  | `/auth/me` | check if i'm logged |
-| `post` | `/auth/login` | login |
-| `post` | `/auth/signup` | signup |
-| `post` | `/auth/logut` | logout |
-| `get`  | `/auth/private` | private route for test |
+## Links
 
-## Login & Signup
+### [Trello](https://trello.com/b/eljtbfFm/semya)
 
-this is the following `body` for the `login` and `signup` request;
 
-```json
-{
-  "username": "demo",
-  "password": "demo"
-}
-```
+### Git
+
+[Client repository Link](https://github.com/ChristopheP96/Semya---FrontEnd)
+
+[Server repository Link](https://github.com/ChristopheP96/Semya---API)
+
+[Deploy Link Backend](http://heroku.com) To be deployed
+
+[Deploy Link Frontend]() To be deployed
+
+### Slides
+
+[Slides Link](https://docs.google.com/presentation/d/1EmxYyWHjn8xdyNRBCBe-seNJuOGMbkbhc7dPZqKEdWw/edit#slide=id.p)
