@@ -12,7 +12,6 @@ const {
 } = require('../helpers/middlewares');
 
 router.get('/', isLoggedIn(), (req, res, next) => {
-  const {_id } = req.session.currentUser;
   Individual.find({ userId: req.session.currentUser._id })
     .then ((individuals) => {
       res.status(200).json({
@@ -35,16 +34,18 @@ router.post(
       gender,
       dateOfBirth,
       placeOfBirth,
-      gotMarried,
-      partner,
       dateOfWedding,
       placeOfWedding,
       isDead,
       placeOfDeath,
       dateOfDeath,
-      parents,
       profession,
-      userId,
+      mother,
+      father,
+      son,
+      daughter,
+      husband,
+      wife
     } = req.body;
     
     try {
@@ -57,16 +58,19 @@ router.post(
         gender,
         dateOfBirth,
         placeOfBirth,
-        gotMarried,
-        partner,
         dateOfWedding,
         placeOfWedding,
         isDead,
         placeOfDeath,
         dateOfDeath,
-        parents,
         profession,
         userId : _id,
+        mother,
+        father,
+        son,
+        daughter,
+        husband,
+        wife
       });
       res.status(200).json(newIndividual);
     } 

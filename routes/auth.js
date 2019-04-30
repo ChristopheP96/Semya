@@ -73,11 +73,4 @@ router.get('/private', isLoggedIn(), (req, res, next) => {
   });
 });
 
-/*router.get('/mytree', isLoggedIn(), (req, res, next) => {
-  res.status(200).json({
-    message: 'This is my familytree',
-  });
-});
-*/
-
 module.exports = router;
