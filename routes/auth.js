@@ -5,7 +5,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 
 const User = require('../models/user');
-const Individual = require('../models/individual');
 
 const {
   isLoggedIn,
