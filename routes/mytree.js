@@ -14,9 +14,9 @@ const {
 router.get('/', isLoggedIn(), (req, res, next) => {
   Individual.find({ userId: req.session.currentUser._id })
     .then ((individuals) => {
-      res.status(200).json({
+      res.status(200).json(
         individuals
-      });
+      );
     })
   
 });
