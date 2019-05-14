@@ -6,9 +6,7 @@ const router = express.Router();
 const Individual = require('../models/individual');
 
 const {
-  isLoggedIn,
-  isNotLoggedIn,
-  validationLoggin,
+  isLoggedIn
 } = require('../helpers/middlewares');
 
 router.get('/', isLoggedIn(), (req, res, next) => {
