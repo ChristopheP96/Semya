@@ -16,6 +16,7 @@ const individualSchema = new Schema({
     placeOfDeath: { type: String },
     dateOfDeath: { type : Date },
     profession: { type: String },
+    individualIsUser: Boolean,
     
     mother: { type: Schema.ObjectId },
     father: { type: Schema.ObjectId },
