@@ -5,11 +5,6 @@ const userSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   firstName: { type: String },
-  gender: { type: String },
-  dateOfBirth: { type : Date },
-  isDead: Boolean,
-  mother: { type: Schema.ObjectId },
-  father: { type: Schema.ObjectId },
 }, {
   timestamps: {
     createdAt: 'created_at',
