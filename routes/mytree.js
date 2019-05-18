@@ -16,7 +16,6 @@ router.get('/', isLoggedIn(), (req, res, next) => {
         individuals
       );
     })
-  
 });
 
 router.post(
@@ -43,7 +42,8 @@ router.post(
       son,
       daughter,
       husband,
-      wife
+      wife,
+      individualIsUser
     } = req.body;
     
     try {
@@ -68,7 +68,8 @@ router.post(
         son,
         daughter,
         husband,
-        wife
+        wife, 
+        individualIsUser
       });
       res.status(200).json(newIndividual);
     } 
@@ -77,5 +78,91 @@ router.post(
     }
   }
 );
+
+router.post('/:id/update', isLoggedIn(), (req, res, next) => {
+    Individual.find({ _id: req.params.id})
+    const { 
+      firstName,
+      secondFirstName,
+      lastName,
+      secondLastName,
+      gender,
+      dateOfBirth,
+      placeOfBirth,
+      dateOfWedding,
+      placeOfWedding,
+      isDead,
+      placeOfDeath,
+      dateOfDeath,
+      profession,
+      mother,
+      father,
+      son,
+      daughter,
+      husband,
+      wife,
+      individualIsUser
+    } = req.body;
+    try {
+      Individual.findByIdAndUpdate(req.params.id, { 
+        firstName,
+        secondFirstName,
+        lastName,
+        secondLastName,
+        gender,
+        dateOfBirth,
+        placeOfBirth,
+        dateOfWedding,
+        placeOfWedding,
+        isDead,
+        placeOfDeath,
+        dateOfDeath,
+        profession,
+        mother,
+        father,
+        son,
+        daughter,
+        husband,
+        wife, 
+        individualIsUser
+      });
+      res.send(individual);
+    } 
+    catch (error) {
+    next(error);
+    }
+  }
+);
+
+router.post('/:id/delete', isLoggedIn(), (req, res, next) => {
+  Individual.findByIdAndRemove({ _id: req.params.id})
+    .then(Individual => {
+      if(!Individual) {
+          return res.status(404).send({
+              message: "Individual not found with id " + req.params.id
+          });
+      }
+      res.send({message: "Individual deleted successfully!"});
+  }).catch(err => {
+    if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+        return res.status(404).send({
+            message: "Individual not found with id " + req.params.id
+        });                
+    }
+    return res.status(500).send({
+        message: "Could not delete individual with id " + req.params.id
+    });
+});
+})
+
+
+router.get('/:id', isLoggedIn(), (req, res, next) => {
+  Individual.find({ _id: req.params.id })
+    .then ((individual) => {
+      res.status(200).json(
+        individual
+      );
+    })
+});
 
 module.exports = router;
