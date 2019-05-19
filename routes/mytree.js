@@ -79,60 +79,15 @@ router.post(
   }
 );
 
-router.post('/:id/update', isLoggedIn(), (req, res, next) => {
-    Individual.find({ _id: req.params.id})
-    const { 
-      firstName,
-      secondFirstName,
-      lastName,
-      secondLastName,
-      gender,
-      dateOfBirth,
-      placeOfBirth,
-      dateOfWedding,
-      placeOfWedding,
-      isDead,
-      placeOfDeath,
-      dateOfDeath,
-      profession,
-      mother,
-      father,
-      son,
-      daughter,
-      husband,
-      wife,
-      individualIsUser
-    } = req.body;
-    try {
-      Individual.findByIdAndUpdate(req.params.id, { 
-        firstName,
-        secondFirstName,
-        lastName,
-        secondLastName,
-        gender,
-        dateOfBirth,
-        placeOfBirth,
-        dateOfWedding,
-        placeOfWedding,
-        isDead,
-        placeOfDeath,
-        dateOfDeath,
-        profession,
-        mother,
-        father,
-        son,
-        daughter,
-        husband,
-        wife, 
-        individualIsUser
-      });
-      res.send(individual);
-    } 
-    catch (error) {
-    next(error);
-    }
-  }
-);
+router.put('/:id/update', isLoggedIn(), (req, res, next) => {
+    Individual.findByIdAndUpdate({ _id: req.params.id}, req.body, {new: true},
+    function (err, user) {
+      if (err) return res.status(500).send("There was a problem updating the user."); 
+res.status(200).send(user);    
+  })
+})
+    
+
 
 router.post('/:id/delete', isLoggedIn(), (req, res, next) => {
   Individual.findByIdAndRemove({ _id: req.params.id})
