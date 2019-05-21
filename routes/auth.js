@@ -46,7 +46,8 @@ router.post(
     const { 
       email, 
       password, 
-      firstName, 
+      firstName,
+      gender 
        } = req.body;
 
     try {
@@ -60,6 +61,7 @@ router.post(
           email, 
           password: hashPass, 
           firstName, 
+          gender
            });
         req.session.currentUser = newUser;
         res.status(200).json(newUser);
